@@ -21,6 +21,8 @@ function createWindow () {
 
   win.loadFile('game.html');
 
+  win.webContents.openDevTools()
+
   initIpcEvents(win)
 }
 

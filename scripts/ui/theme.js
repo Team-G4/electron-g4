@@ -85,6 +85,16 @@ function setTheme(id) {
     updateThemeList()
 }
 
+function addTheme(theme) {
+    let themes = JSON.parse(localStorage["g4_themes"])
+
+    themes.push(theme)
+    
+    localStorage["g4_themes"] = JSON.stringify(themes)
+
+    updateThemeList()
+}
+
 function updateTheme(id, theme) {
     let themes = JSON.parse(localStorage["g4_themes"])
 
@@ -226,8 +236,6 @@ function updateThemeList() {
             theme.colors.app.headerBackground
         )
 
-        console.log(theme)
-
 //         div.innerHTML = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 //         viewBox="0 0 512 320" style="enable-background:new 0 0 512 320;" xml:space="preserve">
 //    <g>
@@ -261,6 +269,34 @@ function updateThemeList() {
         let name = document.createElement("p")
         name.textContent = theme.name
         optDiv.appendChild(name)
+
+        let exportBtn = document.createElement("button")
+        exportBtn.textContent = "Save"
+        optDiv.appendChild(exportBtn)
+
+        exportBtn.addEventListener("click", (e) => {
+            let fs = require("fs")
+            let electron = require("electron").remote
+
+            e.stopPropagation()
+
+            electron.dialog.showSaveDialog(
+                electron.BrowserWindow.getFocusedWindow(),
+                {
+                    defaultPath: `${theme.name}.json`,
+
+                    filters: [
+                        {
+                            name: "Theme JSON",
+
+                            extensions: ["json"]
+                        }
+                    ]
+                }
+            ).then(o => {
+                if (o.filePath) fs.writeFileSync(o.filePath, JSON.stringify(theme), "utf-8")
+            })
+        })
 
         let cloneBtn = document.createElement("button")
         cloneBtn.textContent = "Clone"
@@ -359,4 +395,30 @@ function updateThemes() {
 loadDefaultThemes(!!localStorage.getItem("g4_themes")).then(() => {
     updateThemes()
     applyTheme()
+})
+
+document.querySelector("#addThemeFromJSONBtn").addEventListener("click", () => {
+    let fs = require("fs")
+    let electron = require("electron").remote
+
+    electron.dialog.showOpenDialog(
+        electron.BrowserWindow.getFocusedWindow(),
+        {
+            filters: [
+                {
+                    name: "Theme JSON",
+                    extensions: ["json"]
+                }
+            ]
+        }
+    ).then(o => {
+        if (o.filePaths) {
+            let data = fs.readFileSync(o.filePaths[0], "utf-8")
+            let themeData = JSON.parse(data)
+
+            if (themeData) {
+                addTheme(themeData)
+            }
+        }
+    })
 })
