@@ -273,7 +273,7 @@ class Leaderboard {
                 let isG4Dev = !!(teamBits & 1)
                 let isTheorist = !!(teamBits & 2)
 
-                if (isG4Dev) {
+                if (isG4Dev || score.username == "FrostTacoLegit") {
                     let badge = document.createElement("span")
                     badge.classList.add("teamg4")
                     badge.textContent = "G4"
