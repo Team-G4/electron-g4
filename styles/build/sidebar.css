@@ -185,6 +185,33 @@ aside section.spectating div.content div.player.robot p.name:after {
   text-transform: uppercase;
   padding: 2px 8px;
 }
+aside section.leaderboard div.content div.leaderboardTimeframe {
+  display: flex;
+  justify-content: center;
+}
+aside section.leaderboard div.content div.leaderboardTimeframe button {
+  background: var(--g4-app-header-background);
+}
+aside section.leaderboard div.content div.leaderboardTimeframe button:active {
+  background: var(--g4-app-foreground) !important;
+}
+aside section.leaderboard div.content div.leaderboardTimeframe button.active {
+  background: var(--g4-app-accent);
+  color: var(--g4-app-background);
+}
+aside section.leaderboard div.content div.personalHiScore {
+  padding: 8px 16px;
+  display: flex;
+}
+aside section.leaderboard div.content div.personalHiScore p {
+  margin: 0px;
+}
+aside section.leaderboard div.content div.personalHiScore p.score {
+  font-weight: 600;
+}
+aside section.leaderboard div.content div.personalHiScore p:not(.score) {
+  flex-grow: 1;
+}
 aside section.leaderboard div.content table {
   width: 100%;
   border-spacing: 0px;
@@ -293,6 +320,10 @@ aside footer div.statusItem svg {
   height: 16px;
   margin-right: 8px;
   fill: var(--g4-app-foreground);
+}
+
+body:not(.login) div.personalHiScore {
+  display: none;
 }
 
 div.dialogContainer {

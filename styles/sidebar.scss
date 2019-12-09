@@ -255,6 +255,42 @@ aside {
 
     section.leaderboard {
         div.content {
+            div.leaderboardTimeframe {
+                display: flex;
+                justify-content: center;
+
+                button {
+                    background: var(--g4-app-header-background);
+
+                    &:active {
+                        background: var(--g4-app-foreground) !important;
+                    }
+
+                    &.active {
+                        background: var(--g4-app-accent);
+                        color: var(--g4-app-background);
+                    }
+                }
+            }
+
+            div.personalHiScore {
+                padding: 8px 16px;
+
+                display: flex;
+
+                p {
+                    margin: 0px;
+
+                    &.score {
+                        font-weight: 600;
+                    }
+                }
+
+                p:not(.score) {
+                    flex-grow: 1;
+                }
+            }
+
             table {
                 width: 100%;
 
@@ -407,6 +443,10 @@ aside {
             }
         }
     }
+}
+
+body:not(.login) div.personalHiScore {
+    display: none;
 }
 
 div.dialogContainer {

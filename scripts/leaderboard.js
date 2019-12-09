@@ -213,40 +213,60 @@ class Leaderboard {
         }
     }
 
-    async getLeaderboard(mode) {
-        let legit = localStorage["g4_showLegitTM"]
+    async getLeaderboard(mode, timeframe, legit) {
+        if (legit == undefined) legit = localStorage["g4_showLegitTM"]
         let data = await fetch(
-            leaderboardEndpoint + "/scores?mode=" + mode + "&legit=" + legit
+            leaderboardEndpoint + "/scores?mode=" + mode + "&legit=" + legit + (
+                timeframe ? `&timeframe=${timeframe}` : ""
+            )
         )
 
         return await data.json()
     }
 
+    getLeaderboardTimeframe() {
+        return document.querySelector("div.leaderboardTimeframe button.active").getAttribute("data-frame")
+    }
+
+    async upatePersonalScore(mode) {
+        let data = await fetch(`${leaderboardEndpoint}/playerScores?username=${this.userName}`)
+        data = await data.json()
+
+        let scores = data.scores
+        if (!scores) scores = []
+
+        let hiScore = scores.find(score => score.gamemode == mode)
+
+        if (hiScore) {
+            hiScore = hiScore.score
+        } else {
+            hiScore = 0
+        }
+
+        document.querySelector("div.personalHiScore p.score").textContent = hiScore
+    }
+
     async updateLeaderboard(mode) {
-        let scores = await this.getLeaderboard(mode)
+        let scores = await this.getLeaderboard(mode, this.getLeaderboardTimeframe())
 
         let table = document.querySelector("section.leaderboard tbody")
         table.innerHTML = ""
 
         let counter = 0
 
+        if (this.userName) this.upatePersonalScore(mode)
+
         scores.scores.forEach((score, i) => {
             let tr = document.createElement("tr")
-
-            if (score.username === this.userName) {
-                tr.classList.add("me")
-            
-                if (i === 0) {
-                    this.addAchievement(
-                        `game_${mode}_leader`
-                    )
-                }
-            }
 
             if (score.verified) {
                 tr.classList.add("verified")
             } else {
                 counter++
+            }
+
+            if (score.username === this.userName) {
+                tr.classList.add("me")
             }
 
             let rank = document.createElement("td")
