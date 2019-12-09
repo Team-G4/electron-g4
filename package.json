@@ -6,7 +6,8 @@
   "scripts": {
     "test": "electron .",
     "start": "electron .",
-    "build": "electron-packager D:\\G4X_project G4X.7 --icon=D:\\G4X_project\\icon.ico --executable-name=G4X.7 --appname=G4X.7 --app-version=4.7.0 --ignore=.gitignore --ignore=README.md --ignore=CNAME --ignore=service-worker.js --ignore=G4X.iml --ignore=/.idea --asar --overwrite && npm start"
+    "build-windows": "electron-packager D:\\G4X_project G4X.7 --icon=D:\\G4X_project\\icon.ico --executable-name=G4X.7 --appname=G4X.7 --app-version=4.7.0 --ignore=.gitignore --ignore=README.md --ignore=CNAME --ignore=service-worker.js --ignore=G4X.iml --ignore=/.idea --overwrite && npm start",
+    "build-linux": "electron-packager ~//G4X G4X.7 --icon=~//G4X//icon.ico --executable-name=G4X.7 --appname=G4X.7 --app-version=4.7.0 --ignore=.gitignore --ignore=README.md --ignore=CNAME --ignore=service-worker.js --ignore=G4X.iml --ignore=/.idea --overwrite && npm start"
   },
   "repository": {
     "type": "git",
