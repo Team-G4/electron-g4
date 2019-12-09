@@ -5,3 +5,5 @@ G4X.iml
 .eslintrc.json
 CNAME
 service-worker.js
+/output
+.DS_Store
