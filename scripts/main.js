@@ -96,11 +96,6 @@ waitForAssetLoad(loadDefaultAssets()).then(() => {
         games.forEach(game => game.handleGamepadEvent(e))
     })
 
-    // Load audio & stuff
-    waitForAssetLoad(getNativeModeMusicAssets()).then(() => {
-        document.querySelector("label[for=settingMusic]").classList.remove("loading")
-    })
-
     // On window resize, resize the canvases
     window.addEventListener("resize", () => {
         games.forEach(game => game.resizeCanvas())
