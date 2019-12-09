@@ -1451,6 +1451,7 @@ div.pluginList div.plugin {
   background: var(--g4-app-header-background);
   margin-top: 8px;
   border-radius: 8px;
+  padding-bottom: 8px;
 }
 div.pluginList div.plugin p.description {
   font-size: 11pt;
@@ -1519,17 +1520,6 @@ div.pluginList div.plugin div.toggle input[type=checkbox]:checked + label:before
 div.pluginList div.plugin div.toggle input[type=checkbox]:checked + label:after {
   right: 18px;
   background: var(--g4-app-background);
-}
-div.pluginList div.plugin div.buttons {
-  padding: 0px 16px 16px 16px;
-  display: flex;
-}
-div.pluginList div.plugin div.buttons button {
-  background: var(--g4-app-background);
-}
-div.pluginList div.plugin div.buttons button:active {
-  background: var(--g4-app-foreground);
-  color: var(--g4-app-background);
 }
 
 div.volume {

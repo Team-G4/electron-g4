@@ -355,6 +355,7 @@ div.pluginList {
 
         margin-top: 8px;
         border-radius: 8px;
+        padding-bottom: 8px;
 
         p.description {
             font-size: 11pt;
@@ -449,21 +450,6 @@ div.pluginList {
             
                     background: var(--g4-app-background);
                 }
-            }
-        }
-
-        div.buttons {
-            padding: 0px 16px 16px 16px;
-
-            display: flex;
-
-            button {
-                background: var(--g4-app-background);
-            }
-
-            button:active {
-                background: var(--g4-app-foreground);
-                color: var(--g4-app-background);
             }
         }
     }
