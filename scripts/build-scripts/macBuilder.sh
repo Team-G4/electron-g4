@@ -1,0 +1,3 @@
+electron-packager ./ --overwrite --out=./output/ --icon=./res/icons/icon.icns --platform=darwin --arch=x64 --prune=true --ignore=/scripts/build-scripts --ignore=.idea --ignore=.gitignore --ignore=README.md --ignore=macBuilder.sh --ignore=.git --ignore=icon.icns --ignore=dmgicon.icns --ignore=background.png --ignore=.gitignore
+node ./scripts/build-scripts/macBuilderHelper.js
+echo "Command line done."

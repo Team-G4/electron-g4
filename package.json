@@ -6,7 +6,7 @@
   "scripts": {
     "test": "electron .",
     "start": "electron .",
-    "build": "electron-packager D:\\G4X_project G4X.7 --icon=D:\\G4X_project\\icon.ico --executable-name=G4X.7 --appname=G4X.7 --app-version=4.7.0 --ignore=.gitignore --ignore=README.md --ignore=CNAME --ignore=service-worker.js --ignore=G4X.iml --ignore=/.idea --asar --overwrite && npm start"
+    "macBuilder": "sudo chmod +x ./scripts/build-scripts/macBuilder.sh && ./scripts/build-scripts/macBuilder.sh"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,11 @@
     "electron": "^7.1.2"
   },
   "dependencies": {
+    "command": "0.0.5",
     "discord-rpc": "^3.1.0",
     "electron-debug": "^3.0.1",
-    "electron-packager": "^14.1.1",
+    "electron-installer-dmg": "^3.0.0",
+    "here": "0.0.2",
     "path-exists": "^4.0.0"
   }
 }

@@ -5,7 +5,7 @@ Absolutely free to download!
 
 Desktop version maintained by HiItsDevin_
 
-Current pre-release version: v7.0-beta2 https://github.com/Team-G4/g4x/releases/tag/v7.0-beta2
+Current pre-release version: v7.0-beta3 https://github.com/Team-G4/g4x/releases/tag/v7.0-beta3
 
 [![Discord][1]][2]
 
