@@ -2,7 +2,7 @@
   "name": "g4x",
   "version": "4.7.0",
   "description": "A distraction-less version of The Theorist Gateway gate 4 minigame.",
-  "main": "main.js",
+  "main": "test.js",
   "scripts": {
     "test": "electron .",
     "start": "electron .",
