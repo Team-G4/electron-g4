@@ -7,3 +7,4 @@ CNAME
 service-worker.js
 /output
 .DS_Store
+README.md
