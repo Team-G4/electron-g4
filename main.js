@@ -7,8 +7,10 @@ let win
 //--------------------------------
 function createWindow () {
   win = new BrowserWindow({
-    'minWidth': 1280,
-    'minHeight': 720,
+    width: 1280,
+    height: 720,
+    minWidth: 512,
+    minHeight: 400,
     fullscreen: false,
 
     frame: false,
