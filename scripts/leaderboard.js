@@ -34,6 +34,8 @@ class Leaderboard {
         this.userName = null
         this.accessToken = null
 
+        this.scoreStack = []
+
         if (localStorage.getItem("g4_user_id")) this.forceLogin()
     }
 
@@ -436,7 +438,7 @@ class Leaderboard {
         document.querySelector("dialog#playerStats div.badges").innerHTML = badges
     }
 
-    async postScore(mode, score, deathCount) {
+    async performScoreRequest(mode, score, deathCount) {
         if (!this.userID) return false
         if (score <= 0) return false
 
@@ -459,12 +461,36 @@ class Leaderboard {
                 })
             }
         )
+        let status = data.status
+
+        if (status !== 200) return "err"
 
         data = await data.json()
 
         if (!data.authError) {
             this.accessToken = data.accesstoken
         }
+
+        return "succ"
+    }
+
+    async processScoreStack() {
+        if (!this.scoreStack.length) return
+        
+        let req = this.scoreStack[0]
+        this.scoreStack.splice(0, 1)
+
+        let status = "err"
+
+        while (status == "err") {
+            status = await this.performScoreRequest(req.mode, req.score, req.deathCount)
+        }
+    }
+
+    async postScore(mode, score, deathCount) {
+        this.scoreStack.push({
+            mode, score, deathCount
+        })
     }
 
     async addAchievement(achID) {

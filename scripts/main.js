@@ -9,6 +9,10 @@ waitForAssetLoad(loadDefaultAssets()).then(() => {
         new Leaderboard()
     )
 
+    setInterval(() => {
+        mainGame.leaderboard.processScoreStack()
+    }, 500)
+
     prepG4AccountUI(mainGame.leaderboard)
 
     mainGame.generateLevel(gameModes[0], 0)
