@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
 const path  = require("path");
+
 let win
 
 //Electron
@@ -21,7 +22,7 @@ function createWindow () {
     }
   });
 
-  win.loadFile('game.html');
+  win.loadFile(__dirname + '/game.html');
 
   initIpcEvents(win)
 }
@@ -58,7 +59,8 @@ function initIpcEvents(win) {
 
 app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
 
-app.on('ready', createWindow);
+createWindow();
+
 app.on('browser-window-created', (e, window) => {
   window.setMenu(null);
 });
