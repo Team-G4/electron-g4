@@ -15,7 +15,7 @@ function createWindow () {
     fullscreen: false,
 
     frame: false,
-    icon: __dirname + '/icon.ico',
+    icon: __dirname + '/res/icons/icon.ico',
 
     webPreferences: {
       nodeIntegration: true
