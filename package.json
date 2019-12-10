@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "electron .",
-    "start": "electron ."
+    "start": "electron .",
+    "macBuilder": "sudo chmod +x ./scripts/build-scripts/macBuilder.sh && ./scripts/build-scripts/macBuilder.sh"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,11 @@
     "electron": "^7.1.2"
   },
   "dependencies": {
+    "command": "0.0.5",
     "discord-rpc": "^3.1.0",
     "electron-debug": "^3.0.1",
+    "electron-installer-dmg": "^3.0.0",
+    "here": "0.0.2",
     "path-exists": "^4.0.0"
   }
 }
