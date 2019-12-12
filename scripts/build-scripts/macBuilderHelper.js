@@ -5,7 +5,7 @@ let dmgIcons
 let opts = {
     appPath: "./output/g4x-darwin-x64/g4x.app",
     name: "G4X",
-    title: "Install G4X Public Beta",
+    title: "Install G4X",
     background: "./res/images/background.png",
     icon: "./res/icons/dmgicon.icns",
     debug: false,
