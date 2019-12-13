@@ -23,7 +23,7 @@ function createWindow () {
   });
 
   win.loadFile(__dirname + '/game.html');
-  
+
   initIpcEvents(win)
 }
 
