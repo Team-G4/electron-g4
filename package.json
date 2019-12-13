@@ -2,7 +2,7 @@
   "name": "g4x",
   "version": "4.7.0",
   "description": "A distraction-less version of The Theorist Gateway gate 4 minigame.",
-  "main": "test.js",
+  "main": "main.js",
   "scripts": {
     "test": "electron .",
     "start": "electron .",
@@ -18,15 +18,11 @@
     "url": "https://github.com/team-g4/g4x/issues"
   },
   "homepage": "https://github.com/team-g4/g4x#readme",
-  "devDependencies": {
-    "command": "0.0.5",
+  "dependencies": {
+    "discord-rpc": "^3.1.0",
     "electron": "^7.1.2",
     "electron-debug": "^3.0.1",
     "electron-installer-dmg": "^3.0.0",
-    "here": "0.0.2",
     "path-exists": "^4.0.0"
-  },
-  "dependencies": {
-    "discord-rpc": "^3.1.0"
   }
 }
