@@ -23,15 +23,7 @@ function createWindow () {
   });
 
   win.loadFile(__dirname + '/game.html');
-
-  win.webContents.on("dom-ready", () => {
-    win.webContents.executeJavaScript(
-        fs.readFileSync(
-            path.join(__dirname, "/scripts/electron/discordIntegration.js"), "utf-8"
-        ), true
-    )
-  })
-
+  
   initIpcEvents(win)
 }
 
