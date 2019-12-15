@@ -4,7 +4,8 @@ class CoverageRange {
      * @param {Number} high 
      */
     constructor(low, high) {
-        Object.assign(this, {low, high});
+        this.low = low
+        this.high = high
     }
 
     /**

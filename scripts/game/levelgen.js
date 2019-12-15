@@ -1,30 +1,85 @@
 class Projectile {
     constructor(x, y, velocityX, velocityY, radius) {
-        //type: all number
-        Object.assign(this, {x, y, velocityX, velocityY, radius});
+        /**
+         * @type {Number}
+         */
+        this.x = x
+        /**
+         * @type {Number}
+         */
+        this.y = y
+
+        /**
+         * @type {Number}
+         */
+        this.velocityX = velocityX
+        /**
+         * @type {Number}
+         */
+        this.velocityY = velocityY
+
+        /**
+         * @type {Number}
+         */
+        this.radius = radius
     }
 }
 
 class Cannon {
     constructor(x, y, angle, freqMultiplier) {
-        //type: all number
-        Object.assign(this, {x, y, angle, freqMultiplier});
+        /**
+         * @type {Number}
+         */
+        this.x = x
+        /**
+         * @type {Number}
+         */
+        this.y = y
+        /**
+         * @type {Number}
+         */
+        this.angle = angle
+        /**
+         * @type {Number}
+         */
+        this.freqMultiplier = freqMultiplier
     }
 }
 
 class RingElement {
-    constructor(type, centerX = 0, centerY = 0) {
-        //type string,number,number
-        Object.assign(this, {type, centerX, centerY});
+    constructor(type, centerX, centerY) {
+        /**
+         * @type {String}
+         */
+        this.type = type
+
+        /**
+         * @type {Number}
+         */
+        this.centerX = centerX ? centerX : 0
+        /**
+         * @type {Number}
+         */
+        this.centerY = centerY ? centerY : 0
     }
 }
 
 class RingBall extends RingElement {
     constructor(angle, distance, radius, centerX, centerY) {
         super("ball", centerX, centerY)
-        
-        //type: all numbers
-        Object.assign(this, {angle, distance, radius});
+
+        /**
+         * @type {Number}
+         */
+        this.angle = angle
+        /**
+         * @type {Number}
+         */
+        this.distance = distance
+        /**
+         * @type {Number}
+         */
+        this.radius = radius
 
         this.defaults = {...this}
     }
@@ -35,13 +90,19 @@ class RingPulsingBall extends RingBall {
         super(angle, distance, radius, centerX, centerY)
         this.type = "pulsingBall"
 
-        /** @type {Number} */
+        /**
+         * @type {Number}
+         */
         this.baseRadius = radius
 
-        /** @type {Number} */        
+        /**
+         * @type {Number}
+         */        
         this.pulseFreq = pulseFreq
 
-        /** @type {Number} */
+        /**
+         * @type {Number}
+         */
         this.pulseTime = 0
 
         this.defaults = {...this}
@@ -52,8 +113,23 @@ class RingBar extends RingElement {
     constructor(angleStart, angleLength, distance, radius, centerX, centerY) {
         super("bar", centerX, centerY)
 
-        //type: all number
-        Object.assign(this, {angleStart, angleLength, distance, radius});
+        /**
+         * @type {Number}
+         */
+        this.angleStart = angleStart
+        /**
+         * @type {Number}
+         */
+        this.angleLength = angleLength
+
+        /**
+         * @type {Number}
+         */
+        this.distance = distance
+        /**
+         * @type {Number}
+         */
+        this.radius = radius
 
         this.defaults = {...this}
     }
@@ -64,13 +140,21 @@ class RingMarqueeBar extends RingBar {
         super(angleStart, angleLength, distance, radius, centerX, centerY)
         this.type = "marqueeBar"
 
-        /** @type {Number} */
+        /**
+         * @type {Number}
+         */
         this.baseStart = angleStart
-        /** @type {Number} */
+        /**
+         * @type {Number}
+         */
         this.baseEnd = angleStart + angleLength
-        /** @type {Number} */
+        /**
+         * @type {Number}
+         */
         this.sweepTime = 0
-        /** @type {Number} */
+        /**
+         * @type {Number}
+         */
         this.sweepFreq = sweepFreq
 
         this.defaults = {...this}
@@ -85,48 +169,79 @@ class RingH extends RingElement {
     ) {
         super("h", centerX, centerY)
 
-        Object.assign(this, {angle, distance, radius, direction, layout, wingSpan, hasBase, baseDistance});
+        this.angle = angle
+        this.distance = distance
+        this.radius = radius
+        this.direction = direction
+
+        this.layout = layout
+        this.wingSpan = wingSpan
+        this.hasBase = hasBase
+        this.baseDistance = baseDistance
 
         this.defaults = {...this}
     }
 }
 
 class Ring {
-    constructor(items, speedMult, isDistraction, distance = 0, revolveFreq = 0, revolvePhase = 0) {
-        
-        this.rotation = 0
-        
-        /** @type {RingElement[]} */
+    constructor(items, speedMult, isDistraction, distance, revolveFreq, revolvePhase) {
+        /**
+         * @type {RingElement[]}
+         */
         this.items = items
-        /** @type {Number} */
+
+        this.rotation = 0
+
+        /**
+         * @type {Number}
+         */
         this.speedMult = speedMult
-        /** @type {Boolean} */
+        /**
+         * @type {Boolean}
+         */
         this.isDistraction = isDistraction
 
-        /** @type {Number} */
-        this.distance = distance
-        /** @type {Number} */
-        this.revolveFreq = revolveFreq
-        /** @type {Number} */
-        this.revolvePhase = revolvePhase
+        /**
+         * @type {Number}
+         */
+        this.distance = distance ? distance : 0
+        /**
+         * @type {Number}
+         */
+        this.revolveFreq = revolveFreq ? revolveFreq : 0
+        /**
+         * @type {Number}
+         */
+        this.revolvePhase = revolvePhase ? revolvePhase : 0
     }
 }
 
 class SlowMode {
     constructor(time, isSlow) {
-        Object.assign(this, {time, isSlow});
+        /**
+         * @type {Number}
+         */
+        this.time = time
+        /**
+         * @type {Boolean}
+         */
+        this.isSlow = isSlow
     }
 }
 
 class GameData {
     constructor(mode, cannon, rings, levelIndex, deathCount, record) {
-        
-        this.projectile = null
-        this.slow = new SlowMode(0, false)
-        this.rotation = 0
-        
-        Object.assign(this, {mode, cannon, rings, levelIndex});
+        this.mode = mode
 
+        this.projectile = null
+        this.cannon = cannon
+
+        this.rings = rings
+        this.rotation = 0
+
+        this.slow = new SlowMode(0, false)
+
+        this.levelIndex = levelIndex
         this.userDeaths = deathCount
         this.userRecord = record
     }
