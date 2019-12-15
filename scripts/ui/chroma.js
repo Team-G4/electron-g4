@@ -65,10 +65,7 @@ class Chroma {
 
 class RGBColor {
     constructor(r, g, b, a) {
-        this.r = r
-        this.g = g
-        this.b = b
-        this.a = a
+        Object.assign(this, {r, g, b, a});
     }
 
     /**
