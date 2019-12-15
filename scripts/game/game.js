@@ -10,6 +10,8 @@ class Game {
         isSpectated, spectatedUser,
         leaderboard
     ) {
+            //test, remove later
+            Object.assign(this, {isSpectated})
         /**
          * @type {GameData}
          */
@@ -18,7 +20,7 @@ class Game {
         /**
          * @type {Boolean}
          */
-        this.isSpectated = isSpectated
+        //this.isSpectated = isSpectated
 
         /**
          * @type {String}
