@@ -3,8 +3,7 @@ class AudioItem {
         /**
          * @type {AudioAsset}
          */
-        this.asset = asset
-        this.type = type
+        Object.assign(this, {asset, type});
 
         /**
          * @type {AudioBufferSourceNode}
@@ -50,8 +49,7 @@ class AudioItem {
 
 class AudioCategory {
     constructor(name, maxSlots, masterGain) {
-        this.name = name
-        this.maxSlots = maxSlots
+        Object.assign(this, {name, maxSlots});
 
         this.gainNode = mainAudioContext.createGain()
         this.gainNode.connect(masterGain)

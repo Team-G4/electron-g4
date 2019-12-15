@@ -110,9 +110,7 @@ class LevelRenderer {
 
             createPath: () => { return new Path2D() },
 
-            setClipPath: (path) => {
-                ctx.clip(path)
-            },
+            setClipPath: ctx.clip
             resetClipPath: () => {
                 ctx.clip(null)
             },
@@ -137,22 +135,11 @@ class LevelRenderer {
                 ctx.drawImage(img, x, y, w, h)
             },
 
-            translate: (dX, dY) => {
-                ctx.translate(dX, dY)
-            },
-            rotate: (rot) => {
-                ctx.rotate(rot)
-            },
-            scale: (sX, sY) => {
-                ctx.scale(sX, sY)
-            },
-
-            saveState: () => {
-                ctx.save()
-            },
-            restoreState: () => {
-                ctx.restore()
-            },
+            translate: ctx.translate
+            rotate: ctx.rotate
+            scale: ctx.scale
+            saveState: ctx.save
+            restoreState: ctx.restore
 
             get blendMode() { return ctx.globalCompositeOperation },
             set blendMode(m) { ctx.globalCompositeOperation = m }

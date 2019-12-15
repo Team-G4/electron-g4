@@ -2,9 +2,7 @@ let mainAudioContext = new AudioContext()
 
 class Asset {
     constructor(source, name, filePath) {
-        this.source = source
-        this.filePath = filePath
-        this.name = name
+        Object.assign(this, {source, name, filePath});
 
         this.isLoaded = false
     }
@@ -25,7 +23,7 @@ class Asset {
 }
 
 class AudioAsset extends Asset {
-    constructor(source, name, filePath) {
+        constructor(source, name, filePath) {
         super(source, name, filePath)
 
         /**
