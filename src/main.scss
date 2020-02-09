@@ -1,0 +1,170 @@
+:root {
+    --g4-light1: #F0EFE0;
+    --g4-light2: #CAEC12;
+    --g4-light3: #52CF12;
+    --g4-dark1: #202E22;
+    --g4-dark2: #1A2320;
+    --g4-dark3: #151918;
+}
+
+body {
+    background: var(--g4-dark2);
+
+    font-family: "Inter";
+}
+
+button {
+    height: 40px;
+    
+    font-family: "Inter";
+    font-size: 18px;
+
+    padding: 0px 24px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 8px 10px #0001;
+    outline: none;
+}
+
+main {
+    header {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        top: 16px;
+
+        display: flex;
+        
+        div.gap {
+            flex-grow: 1;
+        }
+
+        button.icon {
+            width: 40px;
+            max-width: 40px;
+
+            background: var(--g4-light2);
+
+            padding: 0px;
+
+            svg {
+                width: 40px;
+                height: 40px;
+
+                fill: var(--g4-dark2);
+            }
+        }
+
+        button.levelStat {
+            width: 180px;
+            
+            background: var(--g4-dark3);
+            color: var(--g4-light3);
+
+            text-transform: uppercase;
+
+            margin: 0px 4px;
+
+            &.levelIndex, i {
+                color: var(--g4-light2);
+
+                font-style: normal;
+            }
+
+            em {
+                color: var(--g4-light1);
+
+                font-weight: 700;
+                font-style: normal;
+            }
+        }
+    }
+
+    footer {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+
+        display: flex;
+        justify-content: center;
+
+        button {            
+            background: var(--g4-light3);
+            color: var(--g4-dark2);
+
+            margin: 0px 4px;
+
+            em {
+                font-weight: 700;
+                font-style: normal;
+            }
+        }
+    }
+
+    div.gameContainer {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        width: calc(100vmin - 64px);
+        height: calc(100vmin - 64px);
+    
+        background: var(--g4-dark1);
+    
+        border-radius: calc(100vmin - 32px);
+        box-shadow: 0px 0px 64px #00000008;
+    
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }
+}
+
+dialog {
+    position: fixed;
+
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 16px 20px #0002;
+
+    button {
+        background: #eee;
+
+        box-shadow: none;
+
+        &:hover {
+            background: #e3e3e3;
+        }
+
+        &:active {
+            background: #c8c8c8;
+        }
+    }
+
+    &.modeSelect {
+        bottom: 16px;
+        max-height: calc(100vh - 64px);
+
+        overflow-y: auto;
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+
+            &:not(:first-child) {
+                margin-top: 16px;
+            }
+
+            header {
+                text-align: center;
+
+                grid-column: span 4;
+            }
+
+            button.active {
+                background: var(--g4-light3);
+                color: var(--g4-dark2);
+            }
+        }
+    }
+}
